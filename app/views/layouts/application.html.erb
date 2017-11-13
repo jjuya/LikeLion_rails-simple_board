@@ -20,14 +20,13 @@
     <div class="form-group"></div>
     
     <div class="row">
-      <div class="col-6">
+      <div class="col-8">
+        <a href="/" class="btn btn-info"> 게시글 리스트 </a>
+        <a href="/user/index" class="btn btn-outline-info"> 회원 리스트 </a>
         <%= flash[:notice] %>
       </div>
       
-      <div class="col-6 text-right">
-        <a href="/" class="btn btn-info"> 게시글 리스트 </a>
-        <a href="/user/index" class="btn btn-outline-info"> 회원 리스트 </a>
-        
+      <div class="col-4 text-right">
         <% if session[:user_id] %>
           <a href="/user/logout" class="btn btn-outline-danger"> 로그아웃 </a>
         <% else %>

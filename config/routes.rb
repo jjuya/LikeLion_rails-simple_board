@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get 'post/show/:id' => 'post#show'
   
+  get '/post/create_comment'
+  
   get 'post/destroy/:id' => 'post#destroy'
   
   get 'post/modify/:id' => 'post#modify'

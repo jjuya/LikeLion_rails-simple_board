@@ -134,9 +134,35 @@ AI 빅데이터 분석가 양성 과정
                 ```ruby
                 t.integer :user_id # 알아서 User로 변경
                 
-                # post.rb
+                # app/model/post.rb
                 belongs_to :user
                 
-                # user.rb
+                # app/model/user.rb
                 has_many :posts
+                
+                user.posts
                 ```
+                ```ruby
+                User.find(1).posts[0].title
+                User.find(1).posts.last.title
+                ```
+            * 1 Post가 여러 Comment를 가질 수 있다
+            * Comment들은 특정한 Post에 속해야 한다.
+            ```ruby
+            # app/model/post.rb
+            belongs_to :user
+            has_many :comments
+                
+            # app/model/comment.rb
+            belongs_to :post
+            
+            # app/controllers/post_controller.rb
+            def show
+                input_id = params[:id]
+                
+                @post = Post.find(input_id)
+                
+                @comments = @post.comments
+            end
+            ```
+        4) gem 'faker'

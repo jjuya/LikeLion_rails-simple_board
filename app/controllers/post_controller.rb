@@ -33,6 +33,22 @@ class PostController < ApplicationController
     input_id = params[:id]
     
     @post = Post.find(input_id)
+    
+    # post에 달려있는 comments만
+    @comments = @post.comments
+  end
+  
+  def create_comment
+    if session[:user_id]
+      Comment.create(
+        content: params[:comment],
+        post_id: params[:post_id]
+      )
+      
+      redirect_to :back
+    else
+      redirect_to '/user/login'
+    end
   end
   
   def destroy
