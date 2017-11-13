@@ -106,7 +106,7 @@ AI 빅데이터 분석가 양성 과정
 ---
 
 ## Week 2: ???
-- day 1 : 
+- day 1 : Model association
     1. [Simple Board](https://github.com/jjuya/LikeLion_rails-simple_board)
         1) Model, View and Controller
             * controller and view
@@ -131,38 +131,47 @@ AI 빅데이터 분석가 양성 과정
             * Post들은 특정한 User에 속해야 한다.
             * 많은 쪽(N)이 속하는 곳의 id를 가지고 있다. → 외래키
                 - orm : 통일된 문법
+                - db/migrate/20171113004145_create_posts.rb
                 ```ruby
                 t.integer :user_id # 알아서 User로 변경
-                
-                # app/model/post.rb
-                belongs_to :user
-                
-                # app/model/user.rb
-                has_many :posts
-                
-                user.posts
                 ```
+                - app/model/post.rb
                 ```ruby
+                belongs_to :user
+                ```
+                - app/model/user.rb
+                ```ruby
+                has_many :posts
+                ```
+                - 예
+                ```ruby
+                User.posts
                 User.find(1).posts[0].title
                 User.find(1).posts.last.title
                 ```
             * 1 Post가 여러 Comment를 가질 수 있다
             * Comment들은 특정한 Post에 속해야 한다.
-            ```ruby
-            # app/model/post.rb
-            belongs_to :user
-            has_many :comments
-                
-            # app/model/comment.rb
-            belongs_to :post
-            
-            # app/controllers/post_controller.rb
-            def show
-                input_id = params[:id]
-                
-                @post = Post.find(input_id)
-                
-                @comments = @post.comments
-            end
-            ```
+                - db/migrate/20171113004145_create_comments.rb
+                ```ruby
+                t.integer :post_id
+                ```
+                - app/model/post.rb
+                ```ruby
+                belongs_to :user
+                has_many :comments
+                ```
+                - app/model/comment.rb
+                ```ruby
+                belongs_to :post
+                ```
+                - app/controllers/post_controller.rb
+                ```ruby
+                def show
+                    input_id = params[:id]
+                    
+                    @post = Post.find(input_id)
+                    
+                    @comments = @post.comments
+                end
+                ```
         4) gem 'faker'
