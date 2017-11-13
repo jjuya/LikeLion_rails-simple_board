@@ -108,16 +108,35 @@ AI 빅데이터 분석가 양성 과정
 ## Week 2: ???
 - day 1 : 
     1. [Simple Board](https://github.com/jjuya/LikeLion_rails-simple_board)
-        1) Post controller
-            - post#index : 모든 게시글을 보여준다
-            - post#new : 새로운 게시글을 만드는 form을 보여준다
-            - post#create : new에서 쓴 게시글을 DB에 저장
-            - post#show : /post/show/:id 해당하는 글 1개만 보여준다
-            - post#moldify : 게시글을 수정할 수 있는 form을 보여 준다
-            - post#update : moldify에서 서정된 글을 DB에 새로 저장
-            - post#destroy : show에서 본 게시글을 삭제
-        2) User controller
-            - user#index : 모든 유저를 보여준다
-            - user#new : 회원가입
-            - user#create : new에서 가입한 회원을 DB에 저장
-            - user#show : /user/show/:id 해당하는 유저 1명만 보여준다
+        1) Model, View and Controller
+            * controller and view
+                - post#index : 모든 게시글을 보여준다
+                - post#new : 새로운 게시글을 만드는 form을 보여준다
+                - post#create : new에서 쓴 게시글을 DB에 저장
+                - post#show : /post/show/:id 해당하는 글 1개만 보여준다
+                - post#moldify : 게시글을 수정할 수 있는 form을 보여 준다
+                - post#update : moldify에서 서정된 글을 DB에 새로 저장
+                - post#destroy : show에서 본 게시글을 삭제
+                - user#index : 모든 유저를 보여준다
+                - user#new : 회원가입
+                - user#create : new에서 가입한 회원을 DB에 저장
+                - user#show : /user/show/:id 해당하는 유저 1명만 보여준다
+                - user#login : login form
+                - user#login_process : 로그인 정보와 DB 유저 정보를 비교해 유저를 로그인시킨다
+            * model
+                - post : title(String), content(String)
+                - user : email(String), password(String)
+        3) model association
+            * 1 User가 여러 Post를 가질 수 있다
+            * Post들은 특정한 User에 속해야 한다.
+            * 많은 쪽(N)이 속하는 곳의 id를 가지고 있다. → 외래키
+                - orm : 통일된 문법
+                ```ruby
+                t.integer :user_id # 알아서 User로 변경
+                
+                # post.rb
+                belongs_to :user
+                
+                # user.rb
+                has_many :posts
+                ```

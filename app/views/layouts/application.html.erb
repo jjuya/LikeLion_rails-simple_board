@@ -19,10 +19,22 @@
     
     <div class="form-group"></div>
     
-    <div class="text-right">
-      <a href="/" class="btn btn-info"> 게시글 리스트 </a>
-      <a href="/user/index" class="btn btn-outline-primary"> 회원 리스트 </a>
-      <a href="/user/index" class="btn btn-primary"> 회원 가입 </a>
+    <div class="row">
+      <div class="col-6">
+        <%= flash[:notice] %>
+      </div>
+      
+      <div class="col-6 text-right">
+        <a href="/" class="btn btn-info"> 게시글 리스트 </a>
+        <a href="/user/index" class="btn btn-outline-info"> 회원 리스트 </a>
+        
+        <% if session[:user_id] %>
+          <a href="/user/logout" class="btn btn-outline-danger"> 로그아웃 </a>
+        <% else %>
+          <a href="/user/login" class="btn btn-primary"> 로그인 </a>
+          <a href="/user/new" class="btn btn-outline-primary"> 회원 가입 </a>
+        <% end %>
+      </div>
     </div>
   </div>
 

@@ -3,7 +3,9 @@
         <h1>Post list</h1>
         
         <div class="text-right">
-            <a href="/post/new" class="btn btn-outline-primary"> 글 쓰기 </a>
+            <% if session[:user_id] %>
+                <a href="/post/new" class="btn btn-outline-primary"> 글 쓰기 </a>
+            <% end %>
         </div>
     </div>
 
@@ -14,6 +16,7 @@
                     <div class="card-body">
                         <%= post.id %> 번째 글
                         <h4 class="card-title"><%=post.title %></h4>
+                        <h6 class="card-subtitle mb-2"><%= post.user.email %></h6>
                         <h6 class="card-subtitle mb-2 text-muted"><%= post.updated_at %></h6>
                         
                         <div class="text-right">

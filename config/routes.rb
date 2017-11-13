@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   get 'user/create'
 
   get 'user/show/:id' => 'user#show'
+  
+  get 'user/login'
+  
+  get 'user/login_process'
+  
+  get 'user/logout'
 
   root 'post#index'
 

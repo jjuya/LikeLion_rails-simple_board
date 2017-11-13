@@ -15,6 +15,16 @@
     
     <div class="form-group row">
         <div class="col-2">
+            <label>글쓴이</label>
+        </div>
+        
+        <div class="col-10">
+            <p><%= @post.user.email %></p>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="col-2">
             <label>작성시간</label>
         </div>
         
@@ -34,7 +44,10 @@
     </div>
     
     <div class="text-right">
-        <a href="/post/modify/<%= @post.id %>" class="btn btn-outline-primary"> 수정 </a>
-        <a href="/post/destroy/<%= @post.id %>" class="btn btn-outline-danger"> 삭제 </a>
+        <% if session[:user_id] == @post.user_id %>
+            <a href="/post/modify/<%= @post.id %>" class="btn btn-outline-primary"> 수정 </a>
+            <a href="/post/destroy/<%= @post.id %>" class="btn btn-outline-danger"> 삭제 </a>
+        <% end %>
+        
     </div>
 </div>
