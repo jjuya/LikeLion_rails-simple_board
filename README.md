@@ -174,4 +174,4 @@ AI 빅데이터 분석가 양성 과정
                     @comments = @post.comments
                 end
                 ```
-        4) gem 'faker'
+    2. [Comment practice](https://github.com/jjuya/LikeLion_rails-comment)
