@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="form-group">
+        <h1>User list</h1>
+        
+        <div class="text-right">
+            <a href="/user/new" class="btn btn-outline-primary"> 회원가입 </a>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <% @users.each do |user| %>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= user.email %></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= user.created_at %></h6>
+                        <p class="card-text"><%= user.password %></p>
+                        
+                        <div class="text-right">
+                            <a href="/user/show/<%= user.id %>" class="btn btn-outline-primary btn-sm"> 상세보기 </a>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group"></div>
+            </div>
+        <% end %>
+    </div>
+</div>

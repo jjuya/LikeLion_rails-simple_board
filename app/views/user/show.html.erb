@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="form-group">
+        <h1>User detail</h1>
+    </div>
+    
+    <div class="form-group row">
+        
+        <div class="col-9">
+            <h4><%= @user.email %></h4>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="col-2">
+            <label>가입일시</label>
+        </div>
+        
+        <div class="col-10">
+            <p><%= @user.created_at %></p>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="col-2">
+            <label>비밀번호</label>
+        </div>
+        
+        <div class="col-10">
+            <p><%= @user.password %></p>
+        </div>
+    </div>
+    
+    <div class="text-right">
+        <a href="/user/index" class="btn btn-outline-primary"> 홈으로 </a>
+    </div>
+</div>
